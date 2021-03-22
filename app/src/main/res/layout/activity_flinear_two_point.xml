@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LinearFTwoPointActivity"
+    android:background="@color/ColorBackGround"
+    android:textColor="@color/ColorTextColor">
+
+
+    <TextView
+        android:id="@+id/tvTwoPointTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="@string/tvi_lfu_two_point"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTwoPointInX1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/tvi_lfu_tpo_in_X1"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTwoPointTitle" />
+
+    <EditText
+        android:id="@+id/etxTwoPointInX1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:maxLength="10"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTwoPointInX1"
+        app:layout_constraintTop_toBottomOf="@+id/tvTwoPointTitle" />
+
+    <TextView
+        android:id="@+id/tvTwoPointInY1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tvi_lfu_tpo_in_Y1"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTwoPointInX1" />
+
+    <EditText
+        android:id="@+id/etxTwoPointInY1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:maxLength="10"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTwoPointInY1"
+        app:layout_constraintTop_toBottomOf="@+id/etxTwoPointInX1" />
+
+    <TextView
+        android:id="@+id/tvTwoPointInX2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tvi_lfu_tpo_in_X2"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTwoPointInY1" />
+
+    <EditText
+        android:id="@+id/etxTwoPointInX2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:maxLength="10"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTwoPointInX2"
+        app:layout_constraintTop_toBottomOf="@+id/etxTwoPointInY1" />
+
+    <TextView
+        android:id="@+id/tvTwoPointInY2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tvi_lfu_tpo_in_Y2"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTwoPointInX2" />
+
+    <EditText
+        android:id="@+id/etxTwoPointInY2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
+        android:maxLength="10"
+        android:textColor="@color/ColorTextColor"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTwoPointInY2"
+        app:layout_constraintTop_toBottomOf="@+id/etxTwoPointInX2" />
+
+    <Button
+        android:id="@+id/btnTwoPointGraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="Graphing"
+        android:text="@string/btn_lfu_tpo_graph"
+        android:textColor="@color/ColorTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxTwoPointInY2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

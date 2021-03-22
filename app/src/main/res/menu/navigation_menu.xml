@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_information"
+        android:icon="@drawable/information"
+        android:title="@string/nav_information_title" />
+
+    <item
+        android:id="@+id/nav_linear_function"
+        android:icon="@drawable/lineal_function"
+        android:title="@string/nav_linear_functions_title" />
+
+       <item
+        android:id="@+id/nav_bool"
+        android:icon="@drawable/bool"
+        android:title="@string/nav_bool_title" />
+
+
+
+
+
+</menu>
