@@ -2,6 +2,7 @@ package com.example.navigatioview2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -27,13 +28,18 @@ public class Graphing extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById( R.id.graph );
 
-        Bundle bun_b= getIntent().getExtras();
-        b = bun_b.getDouble( "b" );
+        Intent recieveGraphing = this.getIntent();
+        b = recieveGraphing.getDoubleExtra( "b",0 );
+        m = recieveGraphing.getDoubleExtra( "m",0 );
 
-        m=3; b=2;
-        tv1.setText("m= "+ (int) m );
-        tv2.setText("x= "+ (int) x );
-        tv3.setText("b= "+ (int) b );
+
+
+        tv1.setText("Ecuacion: y= "+ m +" x+ "+  b );
+        tv2.setText("Ecuacion general: "+ (m*-1) +" x+ 1y +" + (b*1)+" =0 ");
+        tv3.setText("Ecuacion canonica: y/"+ b +" + x/" + (-b/m)+ " = 1 ");
+        tv4.setText("Abcisa en el origen: " + (-b/m) +". Ordenada en el origen: " + b);
+
+
 
 
 
