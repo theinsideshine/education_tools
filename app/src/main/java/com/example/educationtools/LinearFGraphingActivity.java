@@ -3,14 +3,20 @@ package com.example.educationtools;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.navigatioview2.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
 public class
 LinearFGraphingActivity extends AppCompatActivity {
@@ -18,6 +24,12 @@ LinearFGraphingActivity extends AppCompatActivity {
     private LineGraphSeries<DataPoint> series;
     private TextView tv1,tv2,tv3,tv4;
     private double x,y;
+
+    public static final int MAX_DATA_POINT = 500;  //Cantidad de puntos en x a calcular.
+    public static final double RES_POINT = 0.1;    // Paso entre puntos x.
+    public static final int INTERVAL_X = 10 ;     //  modulo del intervalo a partir del corte en X=0.
+    public static final int INTERVAL_Y = 10 ;     //  modulo del intervalo a partir del corte en Y=0.
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +45,9 @@ LinearFGraphingActivity extends AppCompatActivity {
 
         Intent recieveGraphing = this.getIntent();
         data= recieveGraphing.getParcelableExtra("data");
-        x = data.getX(); //Coordenada x para empezar a graficar
+        //revisar esta repetido en el scope del grafico
+
+        x = data.getX0()-INTERVAL_X; //Coordenada x para empezar a graficar
 
 
         tv1.setText("Ec. ordinaria: y= "+ data.getM() +" x+ "+  data.getY0() );
@@ -43,13 +57,41 @@ LinearFGraphingActivity extends AppCompatActivity {
 
 
         series = new LineGraphSeries<DataPoint>();
-        for (int i = 0; i < 500; i++){
-            x = x +0.1;
+        for (int i = 0; i < MAX_DATA_POINT; i++){
+            x = x +RES_POINT;
             y= data.getM() * x + data.getX0();
-            series.appendData(new DataPoint( x, y ),true,500);
+            series.appendData(new DataPoint( x, y ),true,MAX_DATA_POINT);
         }
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(data.getY0()-INTERVAL_Y);
+        graph.getViewport().setMaxY(data.getY0()+INTERVAL_Y);
+
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(data.getX0()-INTERVAL_X);
+        graph.getViewport().setMaxX(data.getX0()+INTERVAL_X);
+
+        // enable scaling and scrolling
+        //graph.getViewport().setScalable(true);
+       // graph.getViewport().setScalableY(true);
         graph.addSeries( series );
+        PointsGraphSeries<DataPoint> series2 = new PointsGraphSeries<>(new DataPoint[] {
+                new DataPoint(data.getY0(),0 ),
+                new DataPoint(0, data.getX0()),
+
+        });
+        graph.addSeries(series2);
+        series2.setColor( Color.RED);
+        series2.setSize(10);
+        series2.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series2, DataPointInterface dataPoint) {
+                Toast.makeText(
+                        LinearFGraphingActivity.this, "Punto seleccionado "+dataPoint, Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
+
 
     public void Back (View view){
 
