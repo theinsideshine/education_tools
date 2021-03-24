@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LinearFTwoPointActivity"
+    tools:context="com.example.educationtools.LinearFTwoPointActivity"
     android:background="@color/ColorBackGround"
     android:textColor="@color/ColorTextColor">
 
@@ -43,6 +43,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="22dp"
         android:ems="10"
+        android:hint="@string/edt_lfu_tpo_input"
         android:inputType="numberSigned|numberDecimal"
         android:maxLength="10"
         android:textColor="@color/ColorTextColor"
@@ -71,6 +72,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="13dp"
         android:ems="10"
+        android:hint="@string/edt_lfu_tpo_input"
         android:inputType="numberSigned|numberDecimal"
         android:maxLength="10"
         android:textColor="@color/ColorTextColor"
@@ -99,6 +101,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="@string/edt_lfu_tpo_input"
         android:inputType="numberSigned|numberDecimal"
         android:maxLength="10"
         android:textColor="@color/ColorTextColor"
@@ -127,6 +130,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="@string/edt_lfu_tpo_input"
         android:inputType="numberSigned|numberDecimal"
         android:maxLength="10"
         android:textColor="@color/ColorTextColor"
@@ -141,35 +145,12 @@
         android:layout_marginTop="20dp"
         android:onClick="Graphing"
         android:text="@string/btn_lfu_tpo_graph"
-        android:textColor="@color/ColorTextColor"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etxTwoPointInY2" />
 
-    <Button
-        android:id="@+id/btn_calculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        android:layout_marginTop="68dp"
-        android:onClick="Calculate"
-        android:text="calcular"
-        android:textColor="@color/ColorTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTwoPointGraph" />
-
-    <TextView
-        android:id="@+id/tv_calculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginBottom="112dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/btnTwoPointGraph"
-        app:layout_constraintStart_toEndOf="@+id/etxTwoPointInX2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

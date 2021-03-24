@@ -1,6 +1,5 @@
-package com.example.navigatioview2;
+package com.example.educationtools;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,16 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.example.navigatioview2.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link nav_linear_function#newInstance} factory method to
+ * Use the {@link nav_information#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class nav_linear_function extends Fragment {
+public class nav_information extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +26,7 @@ public class nav_linear_function extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public nav_linear_function() {
+    public nav_information() {
         // Required empty public constructor
     }
 
@@ -38,22 +36,17 @@ public class nav_linear_function extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment nav_funtion_linear.
+     * @return A new instance of fragment nav_information.
      */
     // TODO: Rename and change types and number of parameters
-    public static nav_linear_function newInstance(String param1, String param2) {
-        nav_linear_function fragment = new nav_linear_function();
+    public static nav_information newInstance(String param1, String param2) {
+        nav_information fragment = new nav_information();
         Bundle args = new Bundle();
         args.putString( ARG_PARAM1, param1 );
         args.putString( ARG_PARAM2, param2 );
         fragment.setArguments( args );
         return fragment;
     }
-
-
-    double x=5,y, m=2,b=3; // en x comienza a graficar
-    LineGraphSeries<DataPoint> series;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,20 +60,7 @@ public class nav_linear_function extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate( R.layout.fragment_nav_linear_function, container, false );
-
-        Button btnOpen = (Button) view.findViewById( R.id.btnLfuTwoPoint );
-        btnOpen.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(getActivity(), LinearFTwoPointActivity.class);
-                startActivity( in );
-            }
-        } );
-
-
-
-
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate( R.layout.fragment_nav_information, container, false );
     }
 }

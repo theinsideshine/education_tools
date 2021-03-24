@@ -1,4 +1,4 @@
-package com.example.navigatioview2;
+package com.example.educationtools;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.navigatioview2.R;
+
 public class LinearFTwoPointActivity extends AppCompatActivity  {
 
     private EditText et_X1,et_Y1,et_X2,et_Y2;
-    private TextView tv_calculate;
-    private  double x ;
-    private double m;
-    private double b;
     private double X1;
     private double Y1;
     private double X2;
@@ -25,32 +23,27 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
     private String strX2;
     private String strY2;
 
+    private LinearFData data = new LinearFData();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_flinear_two_point );
+        setContentView( R.layout.activity_linearf_two_point );
         et_X1 = findViewById( R.id.etxTwoPointInX1);
         et_Y1 = findViewById( R.id.etxTwoPointInY1);
         et_X2 = findViewById( R.id.etxTwoPointInX2);
         et_Y2 = findViewById( R.id.etxTwoPointInY2);
-        tv_calculate = findViewById( R.id.tv_calculate );
-
 
     }
 
     public void Graphing (View view){
-
-        Intent graphing = new Intent(this, Graphing.class);
-
-
-        graphing.putExtra("b",b);
-        graphing.putExtra("m",m);
-
-
+        Calculate();
+        Intent graphing = new Intent(this, LinearFGraphingActivity.class);
+        graphing.putExtra("data", data); // manda el objeto data
         startActivity( graphing );
     }
 
-    public void Calculate (View view){
+    private void Calculate() {
 
         strX1 = et_X1.getText().toString();
         strY1 = et_Y1.getText().toString();
@@ -79,10 +72,9 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
         }
 
 
-        m = (Y2-Y1) / (X2-X1);
-        b = Y1 - (m*X1);
+       data.lfu_gph_calculate_from_ecuation_ordinary( X1,Y1,X2,Y2 );
 
-        tv_calculate.setText( "m= "+m+"; b= "+b );
+
 
 
     }

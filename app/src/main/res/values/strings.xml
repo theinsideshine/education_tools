@@ -6,6 +6,9 @@
     <string name="nav_header_title">The Inside Shine</string>
     <string name="nav_header_subtitle">Educacion y tecnologia aplicada</string>
 
+    <string name="nav_bool_tv_construction">En construccion</string>
+
+
     <string name="btn_lfu_two_point">Dos puntos (X1,Y1) (X2,Y2)</string>
     <string name="btn_lfu_one_point_m">Un punto (X1,Y1) y la pendiente, m</string>
     <string name="btn_lfu_b_m">Ecuacion pendiente y ordenada (m,b)</string>
@@ -19,12 +22,20 @@
     <string name="tvi_lfu_canonical">Inserta los valores de a y b de x/a + y/b = 1</string>
 
 
+
     <string name="tvi_lfu_tpo_in_X1">X1=</string>
     <string name="tvi_lfu_tpo_in_X2">X2=</string>
     <string name="tvi_lfu_tpo_in_Y1">Y1=</string>
     <string name="tvi_lfu_tpo_in_Y2">Y2=</string>
     <string name="tvi_lfu_tpo_in_point">Ingrese el punto</string>
     <string name="btn_lfu_tpo_graph">Graficar</string>
+    <string name="edt_lfu_tpo_input">Ingrese</string>
+
+
+    <string name="btn_lfu_gra_back">Volver</string>
+    <string name="tv1_lfu_gra_null">TextView</string>
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

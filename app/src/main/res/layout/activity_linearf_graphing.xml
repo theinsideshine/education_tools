@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ColorBackGround"
+    android:textColor="@color/ColorTextColor"
+    tools:context="com.example.educationtools.LinearFGraphingActivity">
+
+
+    <TextView
+        android:id="@+id/tvGraphingOrdinaryEcuation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/tv1_lfu_gra_null"
+        android:textColor="@color/ColorTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/tvGraphingGeneralEcuation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/btn_lfu_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGraphingCeroEcuation" />
+
+    <TextView
+        android:id="@+id/tvGraphingGeneralEcuation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv1_lfu_gra_null"
+        android:textColor="@color/ColorTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/tvGraphingCanonicalEcuation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGraphingOrdinaryEcuation" />
+
+    <TextView
+        android:id="@+id/tvGraphingCanonicalEcuation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv1_lfu_gra_null"
+        android:textColor="@color/ColorTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/tvGraphingCeroEcuation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGraphingGeneralEcuation" />
+
+    <TextView
+        android:id="@+id/tvGraphingCeroEcuation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv1_lfu_gra_null"
+        android:textColor="@color/ColorTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/graph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGraphingCanonicalEcuation" />
+
+    <Button
+        android:id="@+id/btn_lfu_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Back"
+        android:text="@string/btn_lfu_gra_back"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graph" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

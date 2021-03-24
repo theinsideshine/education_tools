@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ColorBackGround"
-    tools:context=".MainActivity">
+    tools:context="com.example.educationtools.MainActivity">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/menu_24"
-                app:tint="@color/ColorWhite" />
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/textTitle"
@@ -41,7 +42,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
                 android:text="@string/app_name"
-                android:textColor="@color/ColorWhite"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

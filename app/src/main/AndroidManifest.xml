@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigatioView2">
-        <activity android:name=".Graphing"></activity>
-        <activity android:name=".LinearFTwoPointActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.educationtools.LinearFGraphingActivity"></activity>
+        <activity android:name="com.example.educationtools.LinearFTwoPointActivity" />
+        <activity android:name="com.example.educationtools.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

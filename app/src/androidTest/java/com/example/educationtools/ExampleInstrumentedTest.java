@@ -1,4 +1,4 @@
-package com.example.navigatioview2;
+package com.example.educationtools;
 
 import android.content.Context;
 

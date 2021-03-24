@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/nav_information"
-        android:name="com.example.navigatioview2.nav_information"
+        android:name="com.example.educationtools.nav_information"
         android:label="@string/nav_information_title"
         tools:layout="@layout/fragment_nav_information" />
 
     <fragment
         android:id="@+id/nav_linear_function"
-        android:name="com.example.navigatioview2.nav_linear_function"
+        android:name="com.example.educationtools.nav_linear_function"
         android:label="@string/nav_linear_functions_title"
         tools:layout="@layout/fragment_nav_linear_function" />
     <fragment
         android:id="@+id/nav_bool"
-        android:name="com.example.navigatioview2.nav_bool"
+        android:name="com.example.educationtools.nav_bool"
         android:label="@string/nav_bool_title"
         tools:layout="@layout/fragment_nav_bool" />
 

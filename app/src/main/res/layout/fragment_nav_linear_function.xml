@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.example.educationtools.MainActivity">
+
 
 
     <Button
@@ -14,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:text="@string/btn_lfu_two_point"
         app:layout_constraintBottom_toTopOf="@+id/btnLfuOnePointM"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:text="@string/btn_lfu_b_m"
         app:layout_constraintBottom_toTopOf="@+id/btnLfuAbc"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:text="@string/btn_lfu_abc"
         app:layout_constraintBottom_toTopOf="@+id/btnLfuCanonical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:text="@string/btn_lfu_canonical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:text="@string/btn_lfu_one_point_m"
         app:layout_constraintBottom_toTopOf="@+id/btnLfuOneMb"
         app:layout_constraintEnd_toEndOf="parent"
