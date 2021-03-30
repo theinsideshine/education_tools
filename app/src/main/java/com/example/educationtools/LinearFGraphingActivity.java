@@ -31,6 +31,7 @@ LinearFGraphingActivity extends AppCompatActivity {
     public static final int INTERVAL_Y = 10 ;     //  modulo del intervalo a partir del corte en Y=0.
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -43,25 +44,48 @@ LinearFGraphingActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById( R.id.graph );
         LinearFData data = new LinearFData();
 
+        //Recibe objeto
         Intent recieveGraphing = this.getIntent();
         data= recieveGraphing.getParcelableExtra("data");
         //revisar esta repetido en el scope del grafico
 
-        x = data.getX0()-INTERVAL_X; //Coordenada x para empezar a graficar
+
 
 
         tv1.setText("Ec. ordinaria: y= "+ data.getM() +" x+ "+  data.getY0() );
         tv2.setText("Ec. general: "+ data.getA() +"  x+ "+ data.getB()+" y+" + data.getC() +" =0 ");
         tv3.setText("Ec. canonica: x/"+ data.getX0() +" +y/" + data.getY0()+ " = 1 ");
-        tv4.setText("Abcisa en 0: " + data.getX0() +". Ordenada en 0: " + data.getY0());
-
+        //tv4.setText("Abcisa en 0: " + data.getX0() +". Ordenada en 0: " + data.getY0());
+        tv4.setText("FlagY: " + data.isConstYFlag() +". FlagX: " + data.isConstXFlag());
 
         series = new LineGraphSeries<DataPoint>();
-        for (int i = 0; i < MAX_DATA_POINT; i++){
-            x = x +RES_POINT;
-            y= data.getM() * x + data.getX0();
-            series.appendData(new DataPoint( x, y ),true,MAX_DATA_POINT);
-        }
+
+        if (data.isConstYFlag()) { //Recta constante en y
+            x = data.getX0()-INTERVAL_X; //Coordenada x para empezar a graficar//Recta constante en y
+            for (int i = 0; i < MAX_DATA_POINT; i++) {
+                x = x + RES_POINT;
+                y = data.getY0();
+                series.appendData( new DataPoint( x, y ), true, MAX_DATA_POINT );
+            }
+        }else if (data.isConstXFlag()){  //Recta constante en x no funciona
+                  y = - INTERVAL_Y;
+                  for (int i = 0; i < MAX_DATA_POINT; i++){
+                      y= y + (RES_POINT*10);
+                      series.appendData(new DataPoint( data.getX0(), y ),true,MAX_DATA_POINT);
+                      }
+
+
+        } else{ //recta con pendiente
+            x = data.getX0()-INTERVAL_X;
+            for (int i = 0; i < MAX_DATA_POINT; i++){
+                    x = x +RES_POINT;
+                    y= data.getM() * x + data.getX0();
+                    series.appendData(new DataPoint( x, y ),true,MAX_DATA_POINT);
+                }
+            }
+
+
+        // Configura los ejes a partir de los cruces con cero - INTERVAL
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(data.getY0()-INTERVAL_Y);
         graph.getViewport().setMaxY(data.getY0()+INTERVAL_Y);
@@ -74,6 +98,7 @@ LinearFGraphingActivity extends AppCompatActivity {
         //graph.getViewport().setScalable(true);
        // graph.getViewport().setScalableY(true);
         graph.addSeries( series );
+        /*
         PointsGraphSeries<DataPoint> series2 = new PointsGraphSeries<>(new DataPoint[] {
                 new DataPoint(data.getY0(),0 ),
                 new DataPoint(0, data.getX0()),
@@ -82,17 +107,18 @@ LinearFGraphingActivity extends AppCompatActivity {
         graph.addSeries(series2);
         series2.setColor( Color.RED);
         series2.setSize(10);
+
         series2.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series2, DataPointInterface dataPoint) {
                 Toast.makeText(
                         LinearFGraphingActivity.this, "Punto seleccionado "+dataPoint, Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
     }
 
 
-
+// Vuelve al comienzo
     public void Back (View view){
 
         Intent back = new Intent(this, MainActivity.class);
