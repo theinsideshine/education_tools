@@ -67,7 +67,7 @@ LinearFGraphingActivity extends AppCompatActivity {
                 y = data.getY0();
                 series.appendData( new DataPoint( x, y ), true, MAX_DATA_POINT );
             }
-        }else if (data.isConstXFlag()){  //Recta constante en x no funciona
+        }else if (data.isConstXFlag()){  //Recta constante en x no funciona bien
                   y = - INTERVAL_Y;
                   for (int i = 0; i < MAX_DATA_POINT; i++){
                       y= y + (RES_POINT*10);

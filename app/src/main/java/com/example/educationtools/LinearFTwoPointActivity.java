@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.navigatioview2.R;
 
 public class LinearFTwoPointActivity extends AppCompatActivity  {
 
+    //Variable para ingreso de puntos
     private EditText et_X1,et_Y1,et_X2,et_Y2;
     private double X1;
     private double Y1;
@@ -22,6 +24,10 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
     private String strY1;
     private String strX2;
     private String strY2;
+
+    //Codigos de error.
+    private final static boolean OP_OK = true;
+    private final static boolean OP_ERROR = false;
 
     private LinearFData data = new LinearFData();
 
@@ -37,45 +43,67 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
     }
 
     public void Graphing (View view){
-        Calculate();
-        Intent graphing = new Intent(this, LinearFGraphingActivity.class);
-        graphing.putExtra("data", data); // manda el objeto data
-        startActivity( graphing );
+
+
+        if(Calculate()){
+            Intent graphing = new Intent(this, LinearFGraphingActivity.class);
+            graphing.putExtra("data", data); // Manda el objeto data
+            startActivity( graphing );
+        }
+
     }
 
-    private void Calculate() {
+    //Calculo la ordenada en el origen y la pendiente a partir de 2 puntos.
+
+    private boolean Calculate() {
 
         strX1 = et_X1.getText().toString();
         strY1 = et_Y1.getText().toString();
         strX2 = et_X2.getText().toString();
         strY2 = et_Y2.getText().toString();
 
+        // Chequea que los datos esten ingresados.
+
+        if (  strX1.equals("") || strY1.equals("") || strX2.equals("") || strY2.equals("") ){
+            Toast toast = Toast.makeText(this, "Complete los campos ", Toast.LENGTH_LONG);
+            toast.show();
+            return OP_ERROR;
+        }
+
+        // Convierte de string a double.
         try {
             X1 = Double.parseDouble(strX1);
         }catch (NumberFormatException e) {
-            //lat_string does not contain valid double value
+            Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
+            toast.show();
         }
         try {
             Y1 = Double.parseDouble(strY1);
         }catch (NumberFormatException e) {
-            //lat_string does not contain valid double value
+            Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
+            toast.show();
         }
         try {
             X2 = Double.parseDouble(strX2);
         }catch (NumberFormatException e) {
-            //lat_string does not contain valid double value
+            Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
+            toast.show();
         }
         try {
             Y2 = Double.parseDouble(strY2);
         }catch (NumberFormatException e) {
-            //lat_string does not contain valid double value
+            Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
+            toast.show();
         }
 
-
-       data.lfu_gph_calculate_from_ecuation_ordinary( X1,Y1,X2,Y2 );
-
-
-
+        //Calcula m y b.
+       if(data.lfu_gph_calculate_from_ecuation_ordinary( X1,Y1,X2,Y2 )) {
+           return OP_OK;
+       }else{
+           Toast toast = Toast.makeText(this, "Ingreso el mismo punto ", Toast.LENGTH_SHORT);
+           toast.show();
+           return OP_ERROR;
+       }
 
     }
 

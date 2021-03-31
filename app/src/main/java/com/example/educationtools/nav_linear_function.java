@@ -52,9 +52,6 @@ public class nav_linear_function extends Fragment {
     }
 
 
-    double x=5,y, m=2,b=3; // en x comienza a graficar
-    LineGraphSeries<DataPoint> series;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,8 +75,6 @@ public class nav_linear_function extends Fragment {
                 startActivity( in );
             }
         } );
-
-
 
 
         return view;

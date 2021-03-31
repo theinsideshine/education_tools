@@ -33,7 +33,7 @@
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/menu_24"
-                app:tint="@color/white" />
+                app:tint="@color/ColorPrimaryText" />
 
             <TextView
                 android:id="@+id/textTitle"
@@ -42,7 +42,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
                 android:text="@string/app_name"
-                android:textColor="@color/white"
+                android:textColor="@color/ColorPrimaryText"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
