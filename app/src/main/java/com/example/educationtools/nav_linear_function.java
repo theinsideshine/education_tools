@@ -79,4 +79,6 @@ public class nav_linear_function extends Fragment {
 
         return view;
     }
+
+
 }

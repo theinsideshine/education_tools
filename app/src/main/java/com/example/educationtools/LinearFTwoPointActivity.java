@@ -107,6 +107,11 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
     }
 
+    //controla el boton back
+    @Override
+    public void onBackPressed() {
+
+    }
 
 }
 

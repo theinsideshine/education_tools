@@ -54,4 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     }//Oncreated
 
+    //controla el boton back
+    @Override
+    public void onBackPressed() {
+
+    }
 }
