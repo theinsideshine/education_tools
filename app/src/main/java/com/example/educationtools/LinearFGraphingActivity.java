@@ -61,31 +61,29 @@ LinearFGraphingActivity extends AppCompatActivity {
         series = new LineGraphSeries<DataPoint>();
 
         if (data.isConstYFlag()) { //Recta constante en y
-            x = data.getX0()-INTERVAL_X; //Coordenada x para empezar a graficar//Recta constante en y
-            for (int i = 0; i < MAX_DATA_POINT; i++) {
-                x = x + RES_POINT;
-                y = data.getY0();
-                series.appendData( new DataPoint( x, y ), true, MAX_DATA_POINT );
-            }
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                    new DataPoint(data.getX0()-INTERVAL_X , data.getY0()),
+                    new DataPoint(data.getX0()+INTERVAL_X, data.getY0())
+            });
+            graph.addSeries(series);
         }else if (data.isConstXFlag()){  //Recta constante en x no funciona bien
-                  y = - INTERVAL_Y;
-                  for (int i = 0; i < MAX_DATA_POINT; i++){
-                      y= y + (RES_POINT*10);
-                      series.appendData(new DataPoint( data.getX0(), y ),true,MAX_DATA_POINT);
-                      }
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
 
+                        new DataPoint(data.getX0() , data.getY0()-INTERVAL_Y),
+                        new DataPoint(data.getX0() ,data.getY0()+ INTERVAL_Y)
 
+                });
+                graph.addSeries(series);
         } else{ //recta con pendiente
-            x = data.getX0()-INTERVAL_X;
-            for (int i = 0; i < MAX_DATA_POINT; i++){
-                    x = x +RES_POINT;
-                    y= data.getM() * x + data.getX0();
-                    series.appendData(new DataPoint( x, y ),true,MAX_DATA_POINT);
-                }
+                x = data.getX0()-INTERVAL_X;
+                for (int i = 0; i < MAX_DATA_POINT; i++){
+                        x = x +RES_POINT;
+                        y= data.getM() * x + data.getX0();
+                        series.appendData(new DataPoint( x, y ),true,MAX_DATA_POINT);
+                    }
+                graph.addSeries( series );
             }
-
-
-        // Configura los ejes a partir de los cruces con cero - INTERVAL
+        // Configura los ejes a partir de los cruces con cero -/+ INTERVAL
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(data.getY0()-INTERVAL_Y);
         graph.getViewport().setMaxY(data.getY0()+INTERVAL_Y);
@@ -94,10 +92,10 @@ LinearFGraphingActivity extends AppCompatActivity {
         graph.getViewport().setMinX(data.getX0()-INTERVAL_X);
         graph.getViewport().setMaxX(data.getX0()+INTERVAL_X);
 
-        // enable scaling and scrolling
-        //graph.getViewport().setScalable(true);
-       // graph.getViewport().setScalableY(true);
-        graph.addSeries( series );
+
+
+
+
         /*
         PointsGraphSeries<DataPoint> series2 = new PointsGraphSeries<>(new DataPoint[] {
                 new DataPoint(data.getY0(),0 ),
