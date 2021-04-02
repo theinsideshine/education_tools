@@ -104,7 +104,13 @@ public class LinearFData implements Parcelable {
             C = -Y0;
 
             //Ecuacion canonica x/X0 + y/Y0 = 1 Se despejan de y=mx+Y0.
-            X0 = -(Y0/m);
+            try{
+                X0 = -(Y0/m);
+            }catch (ArithmeticException ex){
+
+                return OP_ERROR;
+            }
+
 
         }
 
