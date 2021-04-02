@@ -28,18 +28,27 @@
     <string name="tvi_lfu_tpo_in_Y1">Y1=</string>
     <string name="tvi_lfu_tpo_in_Y2">Y2=</string>
     <string name="tvi_lfu_tpo_in_point">Ingrese el punto</string>
-    <string name="btn_lfu_tpo_graph">Graficar</string>
+    <string name="tvi_lfu_gra_null">TextView</string>
     <string name="edt_lfu_tpo_input">Ingrese</string>
-
-
+    <string name="btn_lfu_tpo_graph">Graficar</string>
     <string name="btn_lfu_gra_back">Volver</string>
-    <string name="tv1_lfu_gra_null">TextView</string>
+
+    <string name="tvi_inf_1">Version en desarrollo: V0.01 "     </string>
+
+    <string name="tvi_inf_2.1">Facebook:</string>
+    <string name="tvi_inf_2.2">www.fb.me/theinsideshine</string>
+    <string name="tvi_inf_3.1">Instagram:</string>
+    <string name="tvi_inf_3.2">www.instagram.com/educacion.ta</string>
+    <string name="tvi_inf_4.1">Puede encontrar este proyecto en:</string>
+    <string name="tvi_inf_4.2">www.github.com/theinsideshine/EducacionTools</string>
+    <string name="tvi_inf_5.1">Nuestro canal de youtube:</string>
+    <string name="tvi_inf_5.2">www.channel/UClLTMbxqK8LLSWm4bOdyx5Q</string>
 
 
 
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 
 
 </resources>

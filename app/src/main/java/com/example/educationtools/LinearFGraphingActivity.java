@@ -28,8 +28,8 @@ LinearFGraphingActivity extends AppCompatActivity {
     private TextView tv1,tv2,tv3,tv4;
     private double x,y;                            //variables para graficar
 
-    public static final int MAX_DATA_POINT = 500;  //Cantidad de puntos en x a calcular.
-    public static final double RES_POINT = 0.1;    // Paso entre puntos x.
+    //public static final int MAX_DATA_POINT = 500;  //Cantidad de puntos en x a calcular.
+    //public static final double RES_POINT = 0.1;    // Paso entre puntos x.
     public static final int INTERVAL_X = 10 ;     //  modulo del intervalo a partir del corte en X=0.
     public static final int INTERVAL_Y = 10 ;     //  modulo del intervalo a partir del corte en Y=0.
 
@@ -76,11 +76,6 @@ LinearFGraphingActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
         if (data.isConstYFlag()) { //Recta constante en y
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
                     new DataPoint(data.getX0()-INTERVAL_X , data.getY0()),
@@ -111,7 +106,8 @@ LinearFGraphingActivity extends AppCompatActivity {
                 graph.getViewport().setMinX(data.getX0()-INTERVAL_X);
                 graph.getViewport().setMaxX(data.getX0()+INTERVAL_X);
                 graph.addSeries(series);
-        } else{ //recta con pendiente: resolver rando dibujo ,deberia ser corte con los ejes
+        } else{ //recta con pendiente:
+
 
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
 

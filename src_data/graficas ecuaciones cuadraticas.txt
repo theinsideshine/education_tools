@@ -1,0 +1,7 @@
+//recta con pendiente: resolver rando dibujo ,deberia ser corte con los ejes 
+                x = -INTERVAL_X; // Dibuja desde aca corte con x=0
+                for (int i = 0; i < (MAX_DATA_POINT*data.getX0()); i++){//Cuenta maxpoint puntos
+                        x = x +RES_POINT;
+                        y= data.getM() * x + data.getY0();
+                        series.appendData(new DataPoint( x, y ),true,MAX_DATA_POINT);
+                    }

@@ -1,5 +1,7 @@
 package com.example.educationtools;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,15 +9,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.navigatioview2.R;
+
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link nav_information#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class nav_information extends Fragment {
+public class nav_information extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,10 +62,52 @@ public class nav_information extends Fragment {
         }
     }
 
+
+    private TextView tv2_2,tv3_2, tv4_2, tv5_2;
+    private View mView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate( R.layout.fragment_nav_information, container, false );
+        mView = inflater.inflate( R.layout.fragment_nav_information, container, false );
+
+        tv2_2 = (TextView) mView.findViewById( R.id.tv_inf_2_2 );
+        tv3_2 = (TextView) mView.findViewById( R.id.tv_inf_3_2 );
+        tv4_2 = (TextView) mView.findViewById( R.id.tv_inf_4_2 );
+        tv5_2 = (TextView) mView.findViewById( R.id.tv_inf_5_2 );
+
+        tv2_2.setOnClickListener( this );
+        tv3_2.setOnClickListener( this );
+        tv4_2.setOnClickListener( this );
+        tv5_2.setOnClickListener( this );
+
+        return mView;
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        String url = "http://google.com.ar/"; //Por defecto
+
+        switch (v.getId()) {
+            case R.id.tv_inf_2_2:
+                url = "http://www.fb.me/theinsideshine/";
+                break;
+
+            case R.id.tv_inf_3_2:
+                url = "http://www.instagram.com/educacion.ta";
+                break;
+            case R.id.tv_inf_4_2:
+                url = "http://www.github.com/theinsideshine/EducacionTools";
+                break;
+            case R.id.tv_inf_5_2:
+                url = "http://www.youtube.com/channel/UClLTMbxqK8LLSWm4bOdyx5Q";
+                break;
+        }
+        //abre Url
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData( Uri.parse(url));
+        startActivity(i);
     }
 }
