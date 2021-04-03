@@ -1,6 +1,7 @@
 package com.example.educationtools;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -93,21 +94,25 @@ public class nav_information extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.tv_inf_2_2:
                 url = "http://www.fb.me/theinsideshine/";
+                tv2_2.setTextColor( Color.BLUE);
                 break;
 
             case R.id.tv_inf_3_2:
                 url = "http://www.instagram.com/educacion.ta";
+                tv3_2.setTextColor( Color.BLUE);
                 break;
             case R.id.tv_inf_4_2:
                 url = "http://www.github.com/theinsideshine/EducacionTools";
+                tv4_2.setTextColor( Color.BLUE);
                 break;
             case R.id.tv_inf_5_2:
                 url = "http://www.youtube.com/channel/UClLTMbxqK8LLSWm4bOdyx5Q";
+                tv5_2.setTextColor( Color.BLUE);
                 break;
         }
         //abre Url
         Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData( Uri.parse(url));
+        i.setData( Uri.parse(url));        
         startActivity(i);
     }
 }

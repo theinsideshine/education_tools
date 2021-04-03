@@ -2,7 +2,7 @@ package com.example.educationtools;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.Toast;
+
 
 public class LinearFData implements Parcelable {
     private double x = 5;                    //x de la recta.
@@ -12,6 +12,10 @@ public class LinearFData implements Parcelable {
     private boolean ConstXFlag = false;      //Flag para grafico de X = cte.
     private boolean ConstYFlag = false;      //Flag para grafico de Y = cte.
 
+
+    //Constructor
+    public LinearFData() {
+    }
 
     //Codigos de error.
     private final static boolean OP_OK = true;
@@ -29,9 +33,7 @@ public class LinearFData implements Parcelable {
         ConstYFlag = in.readByte() != 0;
     }
 
-    //Constructor
-    public LinearFData() {
-    }
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -96,29 +98,22 @@ public class LinearFData implements Parcelable {
                     C = -X0;
 
               }   else {
-            m = (value_Y2 - value_Y1) / (value_X2 - value_X1);
-            Y0= value_Y1 - ( m * value_X1);
-            //Ecuacion general Ax+BY+C=0.  Se despejan de y=mx+Y0
-            A = -m;
-            B = -1;
-            C = -Y0;
+                        m = (value_Y2 - value_Y1) / (value_X2 - value_X1);
+                        Y0= value_Y1 - ( m * value_X1);
+                        //Ecuacion general Ax+BY+C=0.  Se despejan de y=mx+Y0
+                        A = -m;
+                        B = -1;
+                        C = -Y0;
 
-            //Ecuacion canonica x/X0 + y/Y0 = 1 Se despejan de y=mx+Y0.
-            try{
-                X0 = -(Y0/m);
-            }catch (ArithmeticException ex){
+                        //Ecuacion canonica x/X0 + y/Y0 = 1 Se despejan de y=mx+Y0.
+                        try{
+                            X0 = -(Y0/m);
+                        }catch (ArithmeticException ex){
 
-                return OP_ERROR;
-            }
-
-
+                            return OP_ERROR;
+                        }
         }
-
-
-
-
         return OP_OK;
-
     }
 
     public double getX() {

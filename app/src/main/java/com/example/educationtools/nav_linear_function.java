@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.navigatioview2.R;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link nav_linear_function#newInstance} factory method to

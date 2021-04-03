@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EducationTools">
-        <activity android:name="com.example.educationtools.LinearFGraphingActivity"></activity>
+        <activity android:name="com.example.educationtools.LinearFGraphingActivity"/>
         <activity android:name="com.example.educationtools.LinearFTwoPointActivity" />
         <activity android:name="com.example.educationtools.MainActivity">
             <intent-filter>

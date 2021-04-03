@@ -44,7 +44,6 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
     public void Graphing (View view){
 
-
         if(Calculate()){
             Intent graphing = new Intent(this, LinearFGraphingActivity.class);
             graphing.putExtra("data", data); // Manda el objeto data

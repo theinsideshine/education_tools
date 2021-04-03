@@ -25,16 +25,18 @@ public class
 LinearFGraphingActivity extends AppCompatActivity {
 
     private LineGraphSeries<DataPoint> series;
-    private TextView tv1,tv2,tv3,tv4;
-    private double x,y;                            //variables para graficar
+    private PointsGraphSeries<DataPoint> series2;
+    private DataPoint[] points = new DataPoint[ 1];
 
-    //public static final int MAX_DATA_POINT = 500;  //Cantidad de puntos en x a calcular.
-    //public static final double RES_POINT = 0.1;    // Paso entre puntos x.
+    private TextView tv1,tv2,tv3,tv4;
+    LinearFData data = new LinearFData();
+
     public static final int INTERVAL_X = 10 ;     //  modulo del intervalo a partir del corte en X=0.
     public static final int INTERVAL_Y = 10 ;     //  modulo del intervalo a partir del corte en Y=0.
 
     // devuelve el formato con dos decimales
     DecimalFormat df = new DecimalFormat("#.##");
+
 
     private String convertToFormat(double value){
 
@@ -52,12 +54,10 @@ LinearFGraphingActivity extends AppCompatActivity {
         tv4 =findViewById( R.id.tvGraphingCeroEcuation );
 
         GraphView graph = (GraphView) findViewById( R.id.graph );
-        LinearFData data = new LinearFData();
 
         //Recibe objeto
         Intent recieveGraphing = this.getIntent();
         data= recieveGraphing.getParcelableExtra("data");
-        //revisar esta repetido en el scope del grafico
 
 
         tv1.setText( String.format( "Ec. ordinaria: y= %s x+ %s ",
@@ -69,77 +69,82 @@ LinearFGraphingActivity extends AppCompatActivity {
         tv4.setText( String.format( "Abscisa en 0: %s + Ordenada en 0: %s",
                 convertToFormat(data.getX0()), convertToFormat(data.getY0()) ) );
 
+         PointsCalculate(); // calcula los puntos segun recta
 
-       // tv4.setText("FlagY: " + data.isConstYFlag() +". FlagX: " + data.isConstXFlag());
+        series = new LineGraphSeries<DataPoint>(points);
+        graph.addSeries(series);
 
-        series = new LineGraphSeries<DataPoint>();
+        // Configura los ejes modo dinamico
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setScalableY(true);
+        graph.getViewport().setScrollableY(true);
 
+        series2 = new PointsGraphSeries<>(points); //soporte para mostrar puntos
 
-
-        if (data.isConstYFlag()) { //Recta constante en y
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                    new DataPoint(data.getX0()-INTERVAL_X , data.getY0()),
-                    new DataPoint(data.getX0()+INTERVAL_X, data.getY0())
-            });
-            // Configura los ejes a partir de los cruces con cero -/+ INTERVAL modo fijo
-            graph.getViewport().setYAxisBoundsManual(true);
-            graph.getViewport().setMinY(data.getY0()-INTERVAL_Y);
-            graph.getViewport().setMaxY(data.getY0()+INTERVAL_Y);
-
-            graph.getViewport().setXAxisBoundsManual(true);
-            graph.getViewport().setMinX(data.getX0()-INTERVAL_X);
-            graph.getViewport().setMaxX(data.getX0()+INTERVAL_X);
-            graph.addSeries(series);
-        }else if (data.isConstXFlag()){  //Recta constante en x no funciona bien
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-
-                        new DataPoint(data.getX0() , data.getY0()-INTERVAL_Y),
-                        new DataPoint(data.getX0() ,data.getY0()+ INTERVAL_Y)
-
-                });
-                // Configura los ejes a partir de los cruces con cero -/+ INTERVAL modo fijo
-                graph.getViewport().setYAxisBoundsManual(true);
-                graph.getViewport().setMinY(data.getY0()-INTERVAL_Y);
-                graph.getViewport().setMaxY(data.getY0()+INTERVAL_Y);
-
-                graph.getViewport().setXAxisBoundsManual(true);
-                graph.getViewport().setMinX(data.getX0()-INTERVAL_X);
-                graph.getViewport().setMaxX(data.getX0()+INTERVAL_X);
-                graph.addSeries(series);
-        } else{ //recta con pendiente:
-
-
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-
-                    new DataPoint(0, data.getY0()),
-                    new DataPoint(data.getX0(), 0),
-
-            });
-                graph.addSeries( series );//LA GRAFICA PRIMERO PARA ENFOCAR  EL RANGO Y LUEGO ACTIVAR EL MODO DINAMICO
-
-                // Configura los ejes modo dinamico
-                graph.getViewport().setScalable(true);
-                graph.getViewport().setScrollable(true);
-                graph.getViewport().setScalableY(true);
-                graph.getViewport().setScrollableY(false);
-
-
-                PointsGraphSeries<DataPoint> series2 = new PointsGraphSeries<>(new DataPoint[] {
-                        new DataPoint(0, data.getY0()),
-                        new DataPoint(data.getX0(), 0),
-
-                });
-                graph.addSeries(series2);
-                series2.setColor(Color.RED);
-                series2.setSize(10);
-                series2.setOnDataPointTapListener(new OnDataPointTapListener() {
-                    @Override
-                    public void onTap(Series series2, DataPointInterface dataPoint) {
-                        Toast.makeText(LinearFGraphingActivity.this,
-                                "El punto es: "+dataPoint, Toast.LENGTH_SHORT).show();
-                    }
-                });
+        graph.addSeries(series2);
+        series2.setColor(Color.RED);
+        series2.setSize(10);
+        series2.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series series2, DataPointInterface dataPoint) {
+                Toast.makeText(LinearFGraphingActivity.this,
+                        "El punto es: "+dataPoint, Toast.LENGTH_SHORT).show();
             }
+        });
+
+    }
+/*
+*   Segun graph view los puntos deber ordenar en forma descendente con respecto a x (depende del cuadrante)
+*
+*  Si la recta es una X= constante se fija un rango para el grafico= +/- INTERVAL_Y
+*  Si la recta es una X= constante se fija un rango para el grafico= +/- INTERVAL_X**
+*  Si la recta es Y=mx se toma como (X1,Y2)=(0,0) y se grafica hasta INTERVAL_X
+* Si no es ninguno de los caso anterior se grafica en el cuadrante correspiendo entre (0,X0) y (Y0,0)
+ */
+
+
+    private void PointsCalculate(){
+
+        if (data.isConstXFlag()){ //X= constante
+
+            points =  new DataPoint[]{
+
+                    new DataPoint( data.getX0(),-INTERVAL_Y),
+                    new DataPoint( data.getX0(),INTERVAL_Y )
+            };
+
+        }else if (data.isConstYFlag()){ //X= constante
+
+            points =  new DataPoint[]{
+
+                    new DataPoint( -INTERVAL_X,data.getY0()),
+                    new DataPoint( INTERVAL_X ,data.getY0())
+            };
+
+        }else if (data.getX0()<0){//segundo y tercer cuadrante
+
+            points =  new DataPoint[]{
+
+                    new DataPoint( data.getX0(), 0 ),
+                    new DataPoint( 0,data.getY0() )
+            };
+        }else  if (data.getX0()>0){//primer y cuarto cuadrante
+
+            points =  new DataPoint[]{
+
+                    new DataPoint( 0, data.getY0()),
+                    new DataPoint( data.getX0(),0 )
+            };
+        }else  if ( (data.getX0()==0) &&  (data.getY0()==0) ){ //Y=mx
+
+            points = new DataPoint[]{
+                    new DataPoint( 0, 0),
+                    new DataPoint( INTERVAL_X,INTERVAL_X*data.getM() )
+            };
+
+        }
+
     }
 
 // Vuelve al comienzo
