@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EducationTools">
+        android:theme="@style/Theme.EducationTools"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name="com.example.educationtools.LinearFGraphingActivity"/>
         <activity android:name="com.example.educationtools.LinearFTwoPointActivity" />
         <activity android:name="com.example.educationtools.MainActivity">

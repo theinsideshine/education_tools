@@ -116,10 +116,6 @@ public class LinearFData implements Parcelable {
         return OP_OK;
     }
 
-    public double getX() {
-        return x;
-    }
-
     public double getM() {
         return m;
     }
@@ -133,9 +129,7 @@ public class LinearFData implements Parcelable {
         return B;
     }
 
-    public double getC() {
-        return C;
-    }
+
 
     public double getX0() {
         return X0;

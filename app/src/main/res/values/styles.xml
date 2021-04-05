@@ -5,8 +5,17 @@
        <item name="android:layout_height">wrap_content</item>
        <item name="android:textColor">@color/ColorPrimaryText</item>
 
+    </style>
 
-               
+    <style name="fragment_menu">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/ColorPrimary</item>
+        <item name="android:padding">20dp</item>
+
+
+
     </style>
 
 

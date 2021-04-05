@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/ColorPrimary"
+    style="@style/fragment_menu"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    android:padding="20dp">
+>
+    <!-- android:background="@color/ColorPrimary" tira un warning ya que esta definido en el themes -->
+    <!-- necesito que aca sea de otro color -->
 
     <com.makeramen.roundedimageview.RoundedImageView
+
         android:id="@+id/imageProfile"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/profile_picture"
+        android:src="@mipmap/profile_picture_foreground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_oval="true"
@@ -39,9 +39,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/viewSupported"
         app:layout_constraintStart_toEndOf="@id/imageProfile"
-
         />
 
+    <!-- textSize="10sp" tira un warning deberia ser >12sp ,asi no entra el texto
+    suprime la opcion de este warning en settins-->
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -49,15 +50,10 @@
         android:layout_marginLeft="10dp"
         android:text="@string/nav_header_subtitle"
         android:textColor="@color/ColorPrimaryText"
-        android:textSize="8sp"
+        android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/imageProfile"
         app:layout_constraintTop_toBottomOf="@id/viewSupported"
-
         />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

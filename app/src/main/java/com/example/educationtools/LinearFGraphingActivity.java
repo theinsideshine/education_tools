@@ -12,30 +12,23 @@ import android.widget.Toast;
 import com.example.navigatioview2.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.PointsGraphSeries;
-import com.jjoe64.graphview.series.Series;
 
-import java.text.BreakIterator;
 import java.text.DecimalFormat;
 
 public class
 LinearFGraphingActivity extends AppCompatActivity {
 
-    private LineGraphSeries<DataPoint> series;
-    private PointsGraphSeries<DataPoint> series2;
-    private DataPoint[] points = new DataPoint[ 1];
+    private static DataPoint[] points = new DataPoint[ 1];
 
-    private TextView tv1,tv2,tv3,tv4;
-    LinearFData data = new LinearFData();
+    private static LinearFData data = new LinearFData();
 
     public static final int INTERVAL_X = 10 ;     //  modulo del intervalo a partir del corte en X=0.
     public static final int INTERVAL_Y = 10 ;     //  modulo del intervalo a partir del corte en Y=0.
 
     // devuelve el formato con dos decimales
-    DecimalFormat df = new DecimalFormat("#.##");
+    final DecimalFormat df = new DecimalFormat("#.##");
 
 
     private String convertToFormat(double value){
@@ -48,12 +41,12 @@ LinearFGraphingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_linearf_graphing );
-        tv1 =findViewById( R.id.tvGraphingOrdinaryEcuation );
-        tv2 =findViewById( R.id.tvGraphingGeneralEcuation );
-        tv3 =findViewById( R.id.tvGraphingCanonicalEcuation );
-        tv4 =findViewById( R.id.tvGraphingCeroEcuation );
+        TextView tv1 = findViewById( R.id.tvGraphingOrdinaryEcuation );
+        TextView tv2 = findViewById( R.id.tvGraphingGeneralEcuation );
+        TextView tv3 = findViewById( R.id.tvGraphingCanonicalEcuation );
+        TextView tv4 = findViewById( R.id.tvGraphingCeroEcuation );
 
-        GraphView graph = (GraphView) findViewById( R.id.graph );
+        GraphView graph = findViewById( R.id.graph );
 
         //Recibe objeto
         Intent recieveGraphing = this.getIntent();
@@ -71,8 +64,8 @@ LinearFGraphingActivity extends AppCompatActivity {
 
          PointsCalculate(); // calcula los puntos segun recta
 
-        series = new LineGraphSeries<DataPoint>(points);
-        graph.addSeries(series);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>( points );
+        graph.addSeries( series );
 
         // Configura los ejes modo dinamico
         graph.getViewport().setScalable(true);
@@ -80,18 +73,13 @@ LinearFGraphingActivity extends AppCompatActivity {
         graph.getViewport().setScalableY(true);
         graph.getViewport().setScrollableY(true);
 
-        series2 = new PointsGraphSeries<>(points); //soporte para mostrar puntos
+        PointsGraphSeries<DataPoint> series21 = new PointsGraphSeries<>( points ); //soporte para mostrar puntos
 
-        graph.addSeries(series2);
-        series2.setColor(Color.RED);
-        series2.setSize(10);
-        series2.setOnDataPointTapListener(new OnDataPointTapListener() {
-            @Override
-            public void onTap(Series series2, DataPointInterface dataPoint) {
-                Toast.makeText(LinearFGraphingActivity.this,
-                        "El punto es: "+dataPoint, Toast.LENGTH_SHORT).show();
-            }
-        });
+        graph.addSeries( series21 );
+        series21.setColor(Color.RED);
+        series21.setSize(10);
+        series21.setOnDataPointTapListener( (series2, dataPoint) -> Toast.makeText(LinearFGraphingActivity.this,
+                "El punto es: "+dataPoint, Toast.LENGTH_SHORT).show() );
 
     }
 /*
@@ -148,9 +136,9 @@ LinearFGraphingActivity extends AppCompatActivity {
     }
 
 // Vuelve al comienzo
-    public void Back (View view){
+    public void Back(View view ){
 
-        Intent back = new Intent(this, MainActivity.class);
+        Intent back = new Intent(view.getContext(), MainActivity.class);
         startActivity( back );
     }
 

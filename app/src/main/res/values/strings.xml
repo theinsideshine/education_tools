@@ -16,18 +16,12 @@
     <string name="btn_lfu_canonical">Ecuacion canonica x/a + y/b = 1 (a,b)</string>
 
     <string name="tvi_lfu_two_point">Completa los datos (X1,Y1) (X2,Y2)</string>
-    <string name="tvi_lfu_one_point_m">Completa los datos (X0,Y0) y m</string>
-    <string name="tvi_lfu_b_m">Inserta los valores de m y b de y=mx+b</string>
-    <string name="tvi_lfu_abc">Inserta los valores de A, B y C de Ax+Bx+C=0</string>
-    <string name="tvi_lfu_canonical">Inserta los valores de a y b de x/a + y/b = 1</string>
-
 
 
     <string name="tvi_lfu_tpo_in_X1">X1=</string>
     <string name="tvi_lfu_tpo_in_X2">X2=</string>
     <string name="tvi_lfu_tpo_in_Y1">Y1=</string>
     <string name="tvi_lfu_tpo_in_Y2">Y2=</string>
-    <string name="tvi_lfu_tpo_in_point">Ingrese el punto</string>
     <string name="tvi_lfu_gra_null">TextView</string>
     <string name="edt_lfu_tpo_input">Ingrese</string>
     <string name="btn_lfu_tpo_graph">Graficar</string>
@@ -43,12 +37,5 @@
     <string name="tvi_inf_4.2">www.github.com/theinsideshine/EducacionTools</string>
     <string name="tvi_inf_5.1">Nuestro canal de youtube:</string>
     <string name="tvi_inf_5.2">www.channel/UClLTMbxqK8LLSWm4bOdyx5Q</string>
-
-
-
-
-
-
-
 
 </resources>

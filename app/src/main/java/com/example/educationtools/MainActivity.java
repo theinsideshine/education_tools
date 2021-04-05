@@ -1,17 +1,13 @@
 package com.example.educationtools;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.navigatioview2.R;
@@ -27,12 +23,7 @@ public class MainActivity extends AppCompatActivity {
         //Se le da el evento a la seleccion del icono de menu
         final DrawerLayout drawerLayout = findViewById( R.id.drawerLayout );
 
-        findViewById( R.id.imageMenu ).setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer( GravityCompat.START );
-            }
-        } );
+        findViewById( R.id.imageMenu ).setOnClickListener( v -> drawerLayout.openDrawer( GravityCompat.START ) );
 
         //Muestra el interior de los iconos
         NavigationView navigationView = findViewById( R.id.navigationview );
@@ -45,12 +36,7 @@ public class MainActivity extends AppCompatActivity {
         // pone visible la opcion del menu por defecto(Profile)
         final TextView textTitle = findViewById( R.id.textTitle );
 
-        navController.addOnDestinationChangedListener( new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                textTitle.setText( destination.getLabel() );
-            }
-        } );
+        navController.addOnDestinationChangedListener( (controller, destination, arguments) -> textTitle.setText( destination.getLabel() ) );
 
     }//Oncreated
 

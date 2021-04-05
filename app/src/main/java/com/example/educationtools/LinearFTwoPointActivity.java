@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.navigatioview2.R;
@@ -20,16 +19,12 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
     private double Y1;
     private double X2;
     private double Y2;
-    private String strX1;
-    private String strY1;
-    private String strX2;
-    private String strY2;
 
     //Codigos de error.
     private final static boolean OP_OK = true;
     private final static boolean OP_ERROR = false;
 
-    private LinearFData data = new LinearFData();
+    private final LinearFData data = new LinearFData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +37,7 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
     }
 
-    public void Graphing (View view){
+    public void Graphing(View view){
 
         if(Calculate()){
             Intent graphing = new Intent(this, LinearFGraphingActivity.class);
@@ -56,10 +51,10 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
     private boolean Calculate() {
 
-        strX1 = et_X1.getText().toString();
-        strY1 = et_Y1.getText().toString();
-        strX2 = et_X2.getText().toString();
-        strY2 = et_Y2.getText().toString();
+        String strX1 = et_X1.getText().toString();
+        String strY1 = et_Y1.getText().toString();
+        String strX2 = et_X2.getText().toString();
+        String strY2 = et_Y2.getText().toString();
 
         // Chequea que los datos esten ingresados.
 
@@ -71,25 +66,25 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
         // Convierte de string a double.
         try {
-            X1 = Double.parseDouble(strX1);
+            X1 = Double.parseDouble( strX1 );
         }catch (NumberFormatException e) {
             Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
             toast.show();
         }
         try {
-            Y1 = Double.parseDouble(strY1);
+            Y1 = Double.parseDouble( strY1 );
         }catch (NumberFormatException e) {
             Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
             toast.show();
         }
         try {
-            X2 = Double.parseDouble(strX2);
+            X2 = Double.parseDouble( strX2 );
         }catch (NumberFormatException e) {
             Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
             toast.show();
         }
         try {
-            Y2 = Double.parseDouble(strY2);
+            Y2 = Double.parseDouble( strY2 );
         }catch (NumberFormatException e) {
             Toast toast = Toast.makeText(this, "Error parse Double ", Toast.LENGTH_SHORT);
             toast.show();

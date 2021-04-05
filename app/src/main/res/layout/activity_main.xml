@@ -5,7 +5,6 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ColorBackGround"
     tools:context="com.example.educationtools.MainActivity">
 
 
@@ -32,7 +31,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/menu_24"
+                android:src="@mipmap/menu"
                 app:tint="@color/ColorPrimaryText" />
 
             <TextView
@@ -48,6 +47,7 @@
 
 
         </LinearLayout>
+
 
         <fragment
             android:layout_width="match_parent"
@@ -69,9 +69,5 @@
         app:menu="@menu/navigation_menu"
         app:headerLayout="@layout/layout_navigation_header"
         android:layout_gravity="start"/>
-
-
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
