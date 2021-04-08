@@ -47,13 +47,13 @@ public class nav_information extends Fragment implements View.OnClickListener {
 
     }
 /*
-* no use swtich para esta en linea con la sugerencia de google
+* Don't use switch to stay in line with google's suggestion.
 * http://tools.android.com/tips/non-constant-fields*
  */
     @Override
     public void onClick(View v) {
 
-        String url = "http://google.com.ar/"; //Por defecto
+        String url = "http://google.com.ar/"; //Default
 
       if ( v.getId()== R.id.tv_inf_2_2) {
 
@@ -75,7 +75,7 @@ public class nav_information extends Fragment implements View.OnClickListener {
 
       }
 
-        //abre Url
+        //Open Url.
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData( Uri.parse(url));        
         startActivity(i);

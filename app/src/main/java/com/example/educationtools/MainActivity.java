@@ -13,6 +13,16 @@ import android.widget.TextView;
 import com.example.navigatioview2.R;
 import com.google.android.material.navigation.NavigationView;
 
+/*
+Application in development.
+  TODO: Remove the warning that suggests using FragmentContaneirView instead of Fragment
+        Write the missing functions of the different types of data inputs.
+        Check indentation.
+        Review the comments.
+        Try on different cell phones.
+        Generate the apk and upload it to the google store.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,27 +30,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-        //Se le da el evento a la seleccion del icono de menu
+        //The event is given to the selection of the menu icon.
         final DrawerLayout drawerLayout = findViewById( R.id.drawerLayout );
 
         findViewById( R.id.imageMenu ).setOnClickListener( v -> drawerLayout.openDrawer( GravityCompat.START ) );
 
-        //Muestra el interior de los iconos
+        //Show inside icons.
         NavigationView navigationView = findViewById( R.id.navigationview );
         navigationView.setItemIconTintList( null );
 
-        //Control para llamar a los fragmentos
+        //Control to call fragments.
         NavController navController = Navigation.findNavController(  this,R.id.navHostFragment );
         NavigationUI.setupWithNavController( navigationView, navController );
 
-        // pone visible la opcion del menu por defecto(Profile)
+        // Visible the default menu option (Information).
         final TextView textTitle = findViewById( R.id.textTitle );
 
         navController.addOnDestinationChangedListener( (controller, destination, arguments) -> textTitle.setText( destination.getLabel() ) );
 
     }//Oncreated
 
-    //controla el boton back
+    //Control the back button.
     @Override
     public void onBackPressed() {
 

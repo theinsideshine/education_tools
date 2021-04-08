@@ -24,10 +24,10 @@ LinearFGraphingActivity extends AppCompatActivity {
 
     private static LinearFData data = new LinearFData();
 
-    public static final int INTERVAL_X = 10 ;     //  modulo del intervalo a partir del corte en X=0.
-    public static final int INTERVAL_Y = 10 ;     //  modulo del intervalo a partir del corte en Y=0.
+    public static final int INTERVAL_X = 10 ;     //  Interval to graph from the cutoff at X = 0.
+    public static final int INTERVAL_Y = 10 ;     //  Interval to graph from the cutoff at Y = 0.
 
-    // devuelve el formato con dos decimales
+    // Returns the format with two decimal places.
     final DecimalFormat df = new DecimalFormat("#.##");
 
 
@@ -48,7 +48,7 @@ LinearFGraphingActivity extends AppCompatActivity {
 
         GraphView graph = findViewById( R.id.graph );
 
-        //Recibe objeto
+        //Receive object.
         Intent recieveGraphing = this.getIntent();
         data= recieveGraphing.getParcelableExtra("data");
 
@@ -62,18 +62,18 @@ LinearFGraphingActivity extends AppCompatActivity {
         tv4.setText( String.format( "Abscisa en 0: %s + Ordenada en 0: %s",
                 convertToFormat(data.getX0()), convertToFormat(data.getY0()) ) );
 
-         PointsCalculate(); // calcula los puntos segun recta
+         PointsCalculate(); // Calculate the points of the line.
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>( points );
         graph.addSeries( series );
 
-        // Configura los ejes modo dinamico
+        // Set the dynamic mode axes.
         graph.getViewport().setScalable(true);
         graph.getViewport().setScrollable(true);
         graph.getViewport().setScalableY(true);
         graph.getViewport().setScrollableY(true);
 
-        PointsGraphSeries<DataPoint> series21 = new PointsGraphSeries<>( points ); //soporte para mostrar puntos
+        PointsGraphSeries<DataPoint> series21 = new PointsGraphSeries<>( points ); //Soporte para mostrar puntos.
 
         graph.addSeries( series21 );
         series21.setColor(Color.RED);
@@ -83,18 +83,18 @@ LinearFGraphingActivity extends AppCompatActivity {
 
     }
 /*
-*   Segun graph view los puntos deber ordenar en forma descendente con respecto a x (depende del cuadrante)
-*
-*  Si la recta es una X= constante se fija un rango para el grafico= +/- INTERVAL_Y
-*  Si la recta es una X= constante se fija un rango para el grafico= +/- INTERVAL_X**
-*  Si la recta es Y=mx se toma como (X1,Y2)=(0,0) y se grafica hasta INTERVAL_X
-* Si no es ninguno de los caso anterior se grafica en el cuadrante correspiendo entre (0,X0) y (Y0,0)
+ * According to graph view, the points must be ordered in descending order with respect to x (depends on the quadrant)
+ *
+ * If the line is an X = constant, a range is set for the graph = +/- INTERVAL_Y
+ * If the line is an X = constant, a range is set for the graph = +/- INTERVAL_X **
+ * If the line is Y = mx it is taken as (X1, Y2) = (0,0) and it is plotted up to INTERVAL_X
+ * If it is not any of the previous case, it is plotted in the quadrant corresponding between (0, X0) and (Y0,0)
  */
 
 
     private void PointsCalculate(){
 
-        if (data.isConstXFlag()){ //X= constante
+        if (data.isConstXFlag()){ //X = constant.
 
             points =  new DataPoint[]{
 
@@ -102,7 +102,7 @@ LinearFGraphingActivity extends AppCompatActivity {
                     new DataPoint( data.getX0(),INTERVAL_Y )
             };
 
-        }else if (data.isConstYFlag()){ //X= constante
+        }else if (data.isConstYFlag()){ //Y = constant.
 
             points =  new DataPoint[]{
 
@@ -110,21 +110,21 @@ LinearFGraphingActivity extends AppCompatActivity {
                     new DataPoint( INTERVAL_X ,data.getY0())
             };
 
-        }else if (data.getX0()<0){//segundo y tercer cuadrante
+        }else if (data.getX0()<0){//Second and third quadrant.
 
             points =  new DataPoint[]{
 
                     new DataPoint( data.getX0(), 0 ),
                     new DataPoint( 0,data.getY0() )
             };
-        }else  if (data.getX0()>0){//primer y cuarto cuadrante
+        }else  if (data.getX0()>0){//First and fourth quadrants.
 
             points =  new DataPoint[]{
 
                     new DataPoint( 0, data.getY0()),
                     new DataPoint( data.getX0(),0 )
             };
-        }else  if ( (data.getX0()==0) &&  (data.getY0()==0) ){ //Y=mx
+        }else  if ( (data.getX0()==0) &&  (data.getY0()==0) ){ // Y  =m x
 
             points = new DataPoint[]{
                     new DataPoint( 0, 0),
@@ -135,14 +135,14 @@ LinearFGraphingActivity extends AppCompatActivity {
 
     }
 
-// Vuelve al comienzo
+// Return to start.
     public void Back(View view ){
 
         Intent back = new Intent(view.getContext(), MainActivity.class);
         startActivity( back );
     }
 
-    //controla el boton back
+    //Control the back button.
     @Override
     public void onBackPressed() {
 

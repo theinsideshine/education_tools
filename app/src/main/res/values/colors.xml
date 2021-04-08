@@ -3,58 +3,30 @@
 
     <color name="ColorPrimary">@color/md_red_500</color>
     <color name="ColorPrimaryDark">@color/md_red_800</color>
-    <!-- no lo aplica por defecto a los botones -->
+
     <color name="ColorAccent">@color/md_grey_500</color>
     <color name="ColorPrimaryText">@color/md_white_1000</color>
     <color name="ColorSecondatyText">@color/md_grey_700</color>
 
-
     <!--reds-->
     <color name="md_red_500">#F44336</color>
     <color name="md_red_800">#C62828</color>
-
-    <!-- pinks -->
-
-    <!-- purples -->
-
-    <!-- deep purples -->
-
-    <!-- indigo -->
-
     <!--blue-->
     <color name="md_blue_700">#1976D2</color>
-
-    <!-- light blue-->
-
-    <!-- cyan -->
-
-    <!-- teal -->
 
     <!-- green -->
     <color name="md_green_500">#4CAF50</color>
 
-    <!--light green-->
-
-    <!-- lime-->
-
     <!--yellow -->
     <color name="md_yellow_900">#F57F17</color>
 
-    <!--amber-->
-
     <!--orange-->
     <color name="md_orange_900">#E65100</color>
-
-    <!--deep orange-->
-
-    <!--brown -->
 
     <!--grey-->
     <color name="md_grey_500">#9E9E9E</color>
     <color name="md_grey_700">#616161</color>
     <color name="md_white_1000">#ffffff</color>
-
-    <!--blue grey-->
 
 
 </resources>

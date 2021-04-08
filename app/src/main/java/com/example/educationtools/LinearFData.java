@@ -5,19 +5,19 @@ import android.os.Parcelable;
 
 
 public class LinearFData implements Parcelable {
-    private double x = 5;                    //x de la recta.
-    private double m = 0;                     //Pendiente  de la recta.
-    private double A=0,B=0,C=0;                    //Constantes de la ecuacion general de la recta  Ax+BY+C=0.
-    private double X0=0,Y0=0;                    //Constantes de la ecuacion canonica de la recta. x/X0 + y/Y0 = 1
-    private boolean ConstXFlag = false;      //Flag para grafico de X = cte.
-    private boolean ConstYFlag = false;      //Flag para grafico de Y = cte.
+    private double x = 5;                    //X of the line.
+    private double m = 0;                     //Slope of the line.
+    private double A=0,B=0,C=0;                    //Constants of the general equation of the line Ax + BY + C = 0.
+    private double X0=0,Y0=0;                    //Constants of the canonical equation of the line. x / X0 + y / Y0 = 1
+    private boolean ConstXFlag = false;      //Flag for graph of X = cte.
+    private boolean ConstYFlag = false;      //Flag for graph of Y = cte..
 
 
     //Constructor
     public LinearFData() {
     }
 
-    //Codigos de error.
+    //Error codes.
     private final static boolean OP_OK = true;
     private final static boolean OP_ERROR = false;
 
@@ -72,7 +72,7 @@ public class LinearFData implements Parcelable {
 
 
 
-        // Condicion indefinida
+        // Indefinite condition.
 
         if( (value_Y2 == value_Y1) &&  (value_X2 == value_X1) ) {
             return OP_ERROR;
@@ -100,12 +100,12 @@ public class LinearFData implements Parcelable {
               }   else {
                         m = (value_Y2 - value_Y1) / (value_X2 - value_X1);
                         Y0= value_Y1 - ( m * value_X1);
-                        //Ecuacion general Ax+BY+C=0.  Se despejan de y=mx+Y0
+                        //General equation Ax + BY + C = 0. They clear of y = mx + Y0
                         A = -m;
                         B = -1;
                         C = -Y0;
 
-                        //Ecuacion canonica x/X0 + y/Y0 = 1 Se despejan de y=mx+Y0.
+                        //Canonical equation x / X0 + y / Y0 = 1 Solve for y = mx + Y0.
                         try{
                             X0 = -(Y0/m);
                         }catch (ArithmeticException ex){

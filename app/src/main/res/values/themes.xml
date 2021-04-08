@@ -5,11 +5,11 @@
         <!-- Primary brand color. -->
         <item name="android:colorBackground">@color/md_white_1000</item>
 
-        <!-- default fondo botones y superior education tools. -->
+        <!-- Default background buttons and top education tools. -->
         <item name="colorPrimary">@color/ColorPrimaryDark</item>
-        <!-- barra donde se muestrran wifi. -->
+        <!-- Bar where wifi is shown. -->
         <item name="colorPrimaryVariant">@color/ColorPrimaryDark</item>
-        <!-- default texto botones . -->
+        <!--Default text buttons.-->
         <item name="colorOnPrimary">@color/ColorSecondatyText</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/md_orange_900</item>

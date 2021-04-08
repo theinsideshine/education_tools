@@ -13,14 +13,14 @@ import com.example.navigatioview2.R;
 
 public class LinearFTwoPointActivity extends AppCompatActivity  {
 
-    //Variable para ingreso de puntos
+    //Variable for entry of points.
     private EditText et_X1,et_Y1,et_X2,et_Y2;
     private double X1;
     private double Y1;
     private double X2;
     private double Y2;
 
-    //Codigos de error.
+    //Error codes.
     private final static boolean OP_OK = true;
     private final static boolean OP_ERROR = false;
 
@@ -41,13 +41,13 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
         if(Calculate()){
             Intent graphing = new Intent(view.getContext(), LinearFGraphingActivity.class);
-            graphing.putExtra("data", data); // Manda el objeto data
+            graphing.putExtra("data", data); // Send the data object.
             startActivity( graphing );
         }
 
     }
 
-    //Calculo la ordenada en el origen y la pendiente a partir de 2 puntos.
+    //I calculate the ordinate at the origin and the slope from 2 points.
 
     private boolean Calculate() {
 
@@ -56,7 +56,7 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
         String strX2 = et_X2.getText().toString();
         String strY2 = et_Y2.getText().toString();
 
-        // Chequea que los datos esten ingresados.
+        // Check that the data is entered.
 
         if (  strX1.equals("") || strY1.equals("") || strX2.equals("") || strY2.equals("") ){
             Toast toast = Toast.makeText(this, "Complete los campos ", Toast.LENGTH_LONG);
@@ -64,7 +64,7 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
             return OP_ERROR;
         }
 
-        // Convierte de string a double.
+        // Convert from string to double.
         try {
             X1 = Double.parseDouble( strX1 );
         }catch (NumberFormatException e) {
@@ -90,7 +90,7 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
             toast.show();
         }
 
-        //Calcula m y b.
+        //Find m and b.
        if(data.lfu_gph_calculate_from_ecuation_ordinary( X1,Y1,X2,Y2 )) {
            return OP_OK;
        }else{
@@ -101,7 +101,7 @@ public class LinearFTwoPointActivity extends AppCompatActivity  {
 
     }
 
-    //controla el boton back
+    //Control the back button.
     @Override
     public void onBackPressed() {
 
