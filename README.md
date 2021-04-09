@@ -18,7 +18,7 @@ Some images of the application.
 ![](images/graph_3.1.gif)
 ![](images/graph_3.2.gif)
 
-![](images/inspectioncode.gif)
+![](images/inspetioncode.gif)
 
 
 
