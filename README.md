@@ -9,5 +9,17 @@ Some images of the application.
 ![](images/informacion.gif)
 ![](images/functionlineal.gif)
 ![](images/in_1.gif)
+![](images/graph_1.gif)
+![](images/in_2.gif)
+![](images/graph_2.gif)
+![](images/in_m.gif)
+![](images/graph_m.gif)
+![](images/in_3.gif)
+![](images/graph_3.1.gif)
+![](images/graph_3.2.gif)
+
+![](images/inspectioncode.gif)
+
+
 
 
