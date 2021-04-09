@@ -6,4 +6,8 @@ Some images of the application.
 
 
 ![](images/links.gif)
+![](images/informacion.gif)
+![](images/functionlineal.gif)
+![](images/in_1.gif)
+
 
