@@ -14,7 +14,7 @@ import com.example.navigatioview2.R;
 import com.google.android.material.navigation.NavigationView;
 
 /*
-Application in development.
+Application in development. 04/09/2021
   TODO: Remove the warning that suggests using FragmentContaneirView instead of Fragment
         Write the missing functions of the different types of data inputs.
         Check indentation.
