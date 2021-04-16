@@ -40,6 +40,9 @@ Touching the red dots on the graph shows the coordinates of the graph.
 Code inspection by android studio
 ![](images/inspetioncode.gif)
 
+This is my video :https://www.youtube.com/watch?v=CWIGXTgUmb8&t=10s<br/>
+
+[![Education Tool](https://www.youtube.com/playlist?list=CWIGXTgUmb8&t=10s)
 
 
 
