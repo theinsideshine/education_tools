@@ -42,7 +42,7 @@ Code inspection by android studio
 
 This is my video :https://www.youtube.com/watch?v=CWIGXTgUmb8&t=10s<br/>
 
-[![Education Tool](https://www.youtube.com/playlist?list=CWIGXTgUmb8&t=10s)
+[![Education Tool](images/video_preview.gif)](https://www.youtube.com/playlist?list=CWIGXTgUmb8&t=10s)
 
 
 
